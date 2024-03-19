@@ -102,6 +102,39 @@ int main() {
                 break;
 
             case 2: // BALANCE INQUIRY (JOHN ADRIAN GARRUCHA)
+                if (accountCreated) 
+                {
+                    string accountnumberB;
+                    bool account=false;
+
+                    cout<<"Please Enter your 11-digit Account Number: ";
+                    cin>>accountnumberB;
+
+                    for(const string &acc : accounts) { // this runs the entered account number kung nasa loob ba siya ng vector of accounts na ginawa
+                        if (acc == accountnumberB) {
+                            account = true;
+                            cout<< "Please Enter your 6-digit PIN: ";
+                            string accountpin;
+                            cin >> accountpin;
+
+                            if (accountpin == newaccountpin) {
+                                cout<<"Account Name    : "<<newfirst<<" "<<newmiddle<<" "<<newlast<<endl;
+                                cout<<"Account Number  : "<<accountnumberB<<endl;
+                                cout<<"Account Balance : "<<currentBalance<<endl;
+                            } else {
+                                cout<<"Incorrect PIN. Please try again.\n";
+                            }
+                            break;
+                        }
+                    }
+
+                    if (!account) {
+                        cout << "Invalid Account Number. Please try again.\n";
+                    }
+                } else {
+                    cout << "No account found. Please open an account first." << endl;
+                }
+                break;
             case 3: // DEPOSIT (RAI)
             case 4: // WITHDRAW (CJ)
             case 5: // 
