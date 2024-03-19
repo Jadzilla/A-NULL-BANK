@@ -63,7 +63,7 @@ int main() {
                 cin >> newbirthyear;
 
 
-                if (newbirthyear <= 2005) {
+                if (newbirthyear >= 2005) {
                     cout << "You are not allowed to open an account at A-NULL BANK." << endl;
                     break;
                 }
