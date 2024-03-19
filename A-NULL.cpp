@@ -125,16 +125,6 @@ int main() {
                                 cout<<"Incorrect PIN. Please try again.\n";
                             }
                             break;
-                        }
-                    }
-
-                    if (!account) {
-                        cout << "Invalid Account Number. Please try again.\n";
-                    }
-                } else {
-                    cout << "No account found. Please open an account first." << endl;
-                }
-                break;
             case 3: // DEPOSIT (RAI)
             case 4: // WITHDRAW (CJ)
             case 5: // 
