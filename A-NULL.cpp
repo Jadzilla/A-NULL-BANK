@@ -6,7 +6,7 @@
 
 using namespace std;
 
-string generateAccountNumber() { // ACCOUNT NUMBER GENERATOR TOHH OKAYYY?? OKAY!!!
+string generateAccountNumber() { 
     srand(time(nullptr));
     string accNumber = "";
     for (int i = 0; i < 11; ++i) {
@@ -16,7 +16,7 @@ string generateAccountNumber() { // ACCOUNT NUMBER GENERATOR TOHH OKAYYY?? OKAY!
 }
 
 int main() {
-    string bankName = "A-NULL BANK"; // OFFICIAL BANK NAME A-NULL WALANG LALABAN 
+    string bankName = "A-NULL BANK"; 
     cout << bankName << endl;
 
     string newfirst, newlast, newmiddle, newaccountaddress, newgender, newaccounttype, newaccountpin, accountNumber;
@@ -41,7 +41,66 @@ int main() {
         cin >> choice;
 
         switch (choice) {
-            case 1: // OPEN ACCOUNT (FAITH MARIE LATINGGA LEADER***)
+            case 1: // OPEN ACCOUNT (FAITH MARIE LATINGGA)
+                cout << "Enter First Name: ";
+                cin >> newfirst;
+
+
+                cout << "Enter Last Name: ";
+                cin >> newlast;
+
+
+                cout << "Enter Middle Name: ";
+                cin >> newmiddle;
+
+
+                cout << "Enter Address: ";
+                cin.ignore();
+                getline(cin, newaccountaddress);
+
+
+                cout << "Enter Birth year: ";
+                cin >> newbirthyear;
+
+
+                if (newbirthyear <= 2005) {
+                    cout << "You are not allowed to open an account at A-NULL BANK." << endl;
+                    break;
+                }
+
+
+                cout << "Enter Gender (M/F): ";
+                cin >> newgender;
+
+
+                cout << "Enter Account Type (Savings Account [SA] or Current Account [CA]): ";
+                cin >> newaccounttype;
+
+
+                if (newaccounttype == "SA") {
+                    newaccountSA = 5000;
+                } else if (newaccounttype == "CA") {
+                    newaccountCA = 10000;
+                } else {
+                    cout << "Invalid Account Type. Please choose SA or CA." << endl;
+                    break;
+                }
+
+
+                cout << "Enter PIN: ";
+                cin >> newaccountpin;
+
+
+                accountNumber = generateAccountNumber(); 
+                accounts.push_back(accountNumber); 
+
+
+                accountCreated = true; 
+
+
+                cout <<"\nAccount created successfully! Your account number is: " << accountNumber << endl;
+                break;
+
             case 2: // BALANCE INQUIRY (JOHN ADRIAN GARRUCHA)
             case 3: // DEPOSIT (RAI)
             case 4: // WITHDRAW (CJ)
