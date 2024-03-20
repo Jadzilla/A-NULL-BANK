@@ -11,12 +11,15 @@ using namespace std;
 string generateAccountNumber() {
     srand(time(nullptr));
     string accountNumber = "";
-    for (int i = 0; i < 11; ++i) {
-        accountNumber += to_string(rand() % 10);
+    for (int i = 0; i < 12; ++i) {
+        if ((i + 1) % 5 == 0 && i != 11) {
+            accountNumber += "-";
+        } else {
+            accountNumber += to_string(rand() % 10);
+        }
     }
     return accountNumber;
 }
-
 
 int deposit(int myBalance, int amount) {
     return (myBalance += amount);
@@ -157,7 +160,7 @@ int main() {
                     bool account = false;
 
                     cout<<"<---------------------------------------------------------------------------->"<<endl;
-                    cout<<"Please Enter your 11-digit Account Number: ";
+                    cout<<"Please Enter your 10-digit Account Number: ";
                     cin>>accountnumberB;
 
 
@@ -175,7 +178,7 @@ int main() {
                             if (accountpin == newaccountpin) 
                             {
                                 cout<<"<---------------------------------------------------------------------------->"<<endl;
-                                
+
                                 cout<<"Account Name    : "<<newfirst<<" "<<newmiddle<<" "<<newlast<<endl;
                                 cout<<"Account Number  : "<<accountnumberB<<endl;
                                 cout<<"Account Balance : "<<currentBalance<<endl;
@@ -212,10 +215,10 @@ int main() {
 
 
                 if (accountType == "SA") {
-                    myBalance = 1500;
+                    myBalance = currentBalance;
                     min = 300;
                 } else if (accountType == "CA") {
-                    myBalance = 5000;
+                    myBalance = currentBalance;
                     min = 500;
                 } else {
                     cout << "[Deposit] Invalid Account Type. Please Choose Savings Account or Current Account." << endl;
@@ -229,8 +232,8 @@ int main() {
                         break;
                     }
                     if (Confirmation()) {
-                        myBalance = deposit(myBalance, Amount);
-                        cout << "Transaction successful. Current balance: " << myBalance << endl;
+                        currentBalance = deposit(myBalance, Amount);
+                        cout << "Transaction successful. Current balance: " << currentBalance << endl;
                         break;
                     } else {
                         cout << "Transaction Cancelled" << endl;
@@ -251,10 +254,10 @@ int main() {
     cin >> accountType;
     
     if (accountType == "SA"){
-        myBalance = 1500;
+        myBalance = currentBalance;
         min = 300;
     } else if (accountType == "CA"){
-        myBalance = 5000;
+        myBalance = currentBalance;
         min = 500;
     } else {
         cout << "[Withdraw] Invalid Account Type. Please enter an appropriate response: []" << endl;
@@ -263,30 +266,40 @@ int main() {
     cout << "Enter the amount you want to withdraw (Minimum: " << min << "): ";
     cin >> Amount;
     
-    while (Amount > myBalance || Amount <= 0 || Amount < min){
+    while ( Amount <= 0 && Amount < min){
         cout << "\nInvalid Input, please enter the right amount you wish to withdraw (Minimum: " << min << "): ";
         cin >> Amount;
     }
     
     if (Amount < 0){
         cout << "\nAmount can't be negative, Transaction has been cancelled." << endl;
-    } else if (Amount > myBalance){
+    } else if (Amount > currentBalance){
         cout << "\nInsufficient Balance, Transaction has been cancelled." << endl;
     } else {
         cout << "========================================================================\n";
         cout << "\nTransaction successful." << endl;
-        myBalance -= Amount;
-        cout << "Remaining balance: " << myBalance << endl;
+        currentBalance = (myBalance - Amount);
+        cout << "Remaining balance: " << currentBalance << endl;
         cout << "\n========================================================================";
-                break;
+                
     }
+    break;
             }
             case 5:
                  if (accountCreated) 
                 {
+                    string accountnumberI;
+                    bool account = false;
+
+                    cout<<"<---------------------------------------------------------------------------->"<<endl;
+                    cout<<"Please Enter your 10-digit Account Number: ";
+                    cin>>accountnumberI;
                     cout << "Account Information:\n";
                     cout << "Account Holder: " << newfirst << " " << newmiddle << " " << newlast << endl;
+                    cout << "Birthyear: "<<newbirthyear<<endl;
+                    cout << "Gender: "<<newgender<<endl;
                     cout << "Account Number: " << accountNumber << endl;
+                    cout << "Account type: "<<newaccounttype<<endl;
                     cout << "Current Balance: " << currentBalance << endl;
                 } 
                 else    {
