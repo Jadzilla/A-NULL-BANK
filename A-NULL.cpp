@@ -156,7 +156,7 @@ int main() {
                     string accountnumberB;
                     bool account = false;
 
-
+                    cout<<"<---------------------------------------------------------------------------->"<<endl;
                     cout<<"Please Enter your 11-digit Account Number: ";
                     cin>>accountnumberB;
 
@@ -166,12 +166,16 @@ int main() {
                         if (acc == accountnumberB)
                         {
                             account = true;
+                            cout<<"<---------------------------------------------------------------------------->"<<endl;
                             cout<< "Please Enter your PIN: ";
                             string accountpin;
                             cin >> accountpin;
 
 
-                            if (accountpin == newaccountpin) {
+                            if (accountpin == newaccountpin) 
+                            {
+                                cout<<"<---------------------------------------------------------------------------->"<<endl;
+                                
                                 cout<<"Account Name    : "<<newfirst<<" "<<newmiddle<<" "<<newlast<<endl;
                                 cout<<"Account Number  : "<<accountnumberB<<endl;
                                 cout<<"Account Balance : "<<currentBalance<<endl;
